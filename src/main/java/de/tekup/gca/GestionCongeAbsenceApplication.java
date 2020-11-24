@@ -47,9 +47,9 @@ public class GestionCongeAbsenceApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		  
-		   User u = userService.addAccount(new User("baha", "123456789", "baha", "Zaghdoudi", "zagdoudi@gmail.com", "98654321", true));
-		   User u2 = userService.addAccount(new User("ayoub", "123456789", "ayoub", "Belgacem", "ayoub@hotmail.fr", "26456123", true));
-		   User u3 = userService.addAccount(new User("hayet", "123456789", "hayet", "Slimani", "hayet@hotmail.fr", "12545666", true));
+		   User u = userService.addAccount(new User("baha", "123456789", "baha", "Zaghdoudi", "zagdoudi@gmail.com", "98654321", true, 30));
+		   User u2 = userService.addAccount(new User("ayoub", "123456789", "ayoub", "Belgacem", "ayoub@hotmail.fr", "26456123", true, 30));
+		   User u3 = userService.addAccount(new User("hayet", "123456789", "hayet", "Slimani", "hayet@hotmail.fr", "12545666", true, 30));
 
 		   userService.saveRole(new AppRole(null, "ADMIN"));
 		   userService.saveRole(new AppRole(null, "DIRECTEUR"));
@@ -61,8 +61,8 @@ public class GestionCongeAbsenceApplication implements CommandLineRunner {
 		  
 		   absenceService.addAbsence(new Absence(LocalDate.of(2020, 9, 02), LocalDate.of(2020, 9, 03),u));
 		   absenceService.addAbsence(new Absence(LocalDate.of(2020, 9, 05), LocalDate.of(2020, 9, 06),u2));
-		   congeService.addConge(new Conge(LocalDate.of(2020, 9, 05), LocalDate.of(2020, 9, 10), "non", false, true, 30, u));
-		   congeService.addConge(new Conge(LocalDate.of(2020, 9, 05), LocalDate.of(2020, 9, 10), "non", false, true, 30, u2));
+		   congeService.addConge(new Conge(LocalDate.of(2020, 9, 05), LocalDate.of(2020, 9, 10), "non", false, true, u));
+		   congeService.addConge(new Conge(LocalDate.of(2020, 9, 05), LocalDate.of(2020, 9, 10), "non", false, true, u2));
 		   
 		   reclamationService.addReclamation(new Reclamation("bonjour ayoub", "bonjour", LocalDate.of(2020, 10, 01), u));
 		   reclamationService.addReclamation(new Reclamation("bonjour ayoub", "bonjour", LocalDate.of(2020, 11, 01), u2));

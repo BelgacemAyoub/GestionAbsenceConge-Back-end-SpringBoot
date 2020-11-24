@@ -70,10 +70,11 @@ public class CongeImpl implements CongeService{
 	}
 
 	@Override
-	public void acceptConge(Conge conge) {
+	public void acceptConge(Conge conge, String login) {
+		User u = userRepo.findByLogin(login);
 		int nbr = 0;
 		long days = ChronoUnit.DAYS.between(conge.getDateDebut(), conge.getDateFin());
-		if (conge.getSoldeConge() >= days) {
+		if (u.getSoldeConge() >= days) {
 			
 			for (HolidaysCalendar day : holidaysList) {
 				
@@ -82,7 +83,8 @@ public class CongeImpl implements CongeService{
 				}
 			}
 			conge.setConfirmation(true);
-			conge.setSoldeConge((int) (conge.getSoldeConge()-days+nbr));
+			u.setSoldeConge((int) (u.getSoldeConge()-days+nbr));
+			userRepo.save(u);
 			congeRepo.save(conge);
 		}	
 	}

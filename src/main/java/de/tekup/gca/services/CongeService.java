@@ -11,7 +11,7 @@ public interface CongeService {
 	public void updateConge (Conge conge);
 	public List<Conge> allConges ();
 	public Conge findConge (Long conge_id);
-	public void acceptConge (Conge conge);
+	public void acceptConge (Conge conge, String login);
 	public void refuseConge (Long conge_id, String message);
 	public List<Conge> allCongeById(Long user_id);
 	

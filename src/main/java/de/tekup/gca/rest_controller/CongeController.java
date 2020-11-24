@@ -26,10 +26,11 @@ public class CongeController {
 	@Autowired
 	private CongeService congeService;
 
-	@PostMapping(value="/accept")
-	public ResponseEntity<Conge> acceptConge(@RequestBody Conge conge) {
+	@PostMapping(value="/accept/{login}")
+	public ResponseEntity<Conge> acceptConge(@RequestBody Conge conge, @PathVariable String login) {  
+		// objet conge récupérer à partir de formulaire et login récupérer à partir de path  
 		try {
-			congeService.acceptConge(conge);
+			congeService.acceptConge(conge, login);
 			return new ResponseEntity<Conge>(conge,HttpStatus.ACCEPTED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.EXPECTATION_FAILED);
@@ -39,7 +40,7 @@ public class CongeController {
 	
 	
 	@GetMapping(value = "/list")
-	public List<Conge> userlist() { //  @RequestBody User user : eli jeni mel front
+	public List<Conge> userlist() { 
 		
 		return congeService.allConges();
 	}

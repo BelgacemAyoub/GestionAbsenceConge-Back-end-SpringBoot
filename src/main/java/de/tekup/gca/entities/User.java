@@ -35,10 +35,11 @@ public class User {
 	private String prenom;
 	private String mail;
 	private String tel;
+	private int soldeConge;
 	private boolean accepted;
 	
 
-	public User(String login, String password, String nom, String prenom, String mail, String tel, boolean accepted) {
+	public User(String login, String password, String nom, String prenom, String mail, String tel, boolean accepted, int soldeConge) {
 		super();
 		this.login = login;
 		this.password = password;
@@ -46,6 +47,7 @@ public class User {
 		this.prenom = prenom;
 		this.mail = mail;
 		this.tel = tel;
+		this.soldeConge = soldeConge;
 		this.accepted = accepted;
 	}
 	
