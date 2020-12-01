@@ -65,7 +65,7 @@ public class UserImpl implements UserService {
 
 
 	@Override
-	public void acceptUser(Long user_id) {
+	public void activerUser(Long user_id) {
 		
 		User user = userRepo.findById(user_id).orElseThrow(() -> new RuntimeException("User not exist"));
 		if (!user.equals(null)) {
@@ -75,9 +75,13 @@ public class UserImpl implements UserService {
 	}
 
 	@Override
-	public void refuseUser(Long user_id) {
-
-			userRepo.deleteById(user_id);
+	public void desactiverUser(Long user_id) {
+		User user = userRepo.findById(user_id).orElseThrow(() -> new RuntimeException("User not exist"));
+			//userRepo.deleteById(user_id);
+			if (!user.equals(null)) {
+				user.setAccepted(false);
+				userRepo.save(user);
+			}
 	}
 	
 	@Override

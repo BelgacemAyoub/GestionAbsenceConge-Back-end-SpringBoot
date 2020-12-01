@@ -15,8 +15,8 @@ public interface UserService {
 	public List<User> allUsers();
 	public void resetPassword(String newPwd , Long user_id);
 	public void resetPassword(String newPwd ,String oldPwd, Long user_id);
-	public void acceptUser(Long user_id);
-	public void refuseUser(Long user_id);
+	public void activerUser(Long user_id);
+	public void desactiverUser(Long user_id);
 	public AppRole saveRole(AppRole role);
 	public void addRoleToUser (String login, String roleName);
 	public User findUserByLogin (String login);

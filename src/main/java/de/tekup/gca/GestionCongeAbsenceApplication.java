@@ -55,8 +55,8 @@ public class GestionCongeAbsenceApplication implements CommandLineRunner {
 		   userService.saveRole(new AppRole(null, "DIRECTEUR"));
 		   userService.saveRole(new AppRole(null, "USER"));
 		   
-		   userService.addRoleToUser(u.getNom(), "ADMIN");
-		   userService.addRoleToUser(u2.getNom(), "USER");
+		   userService.addRoleToUser(u.getNom(), "USER");
+		   userService.addRoleToUser(u2.getNom(), "ADMIN");
 		   userService.addRoleToUser(u3.getNom(), "DIRECTEUR");
 		  
 		   absenceService.addAbsence(new Absence(LocalDate.of(2020, 9, 02), LocalDate.of(2020, 9, 03),u));

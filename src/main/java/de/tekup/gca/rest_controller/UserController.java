@@ -46,6 +46,7 @@ public class UserController {
 	public List<User> userlist() { //  @RequestBody User user : eli jeni mel front
 		
 		return userService.allUsers();
+		
 	}
 	
 	@DeleteMapping(value = "/deleteUser/{user_id}")
@@ -108,6 +109,21 @@ public class UserController {
 		
 	}
 	
+	@GetMapping(value = "/findUserByLogin/{login}")
+	public ResponseEntity<User> findUserByLogin(@PathVariable String login) { //  @RequestBody User user : eli jeni mel front
+		try {
+			User u = userService.findUserByLogin(login);
+			
+			 return new ResponseEntity<User>(u, HttpStatus.ACCEPTED);
+			 
+
+		} catch (Exception e) {
+			 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		
+	}
+	
+	
 	@PostMapping(value = "/resetUserPass")
 	public ResponseEntity<User> userResetPass(@RequestBody UserPassword user) { //  @RequestBody User user : eli jeni mel front
 		try {
@@ -117,13 +133,12 @@ public class UserController {
 			 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		
-	}
+	}	
 	
-	@GetMapping(value = "/acceptUser/{user_id}")
-	public ResponseEntity<User> acceptUser(@PathVariable Long user_id) {
+	@GetMapping(value = "/activerUser/{user_id}")
+	public ResponseEntity<User> activerUser(@PathVariable Long user_id) {
 		try {
-			
-			 userService.acceptUser(user_id);
+			 userService.activerUser(user_id);
 			 return new ResponseEntity<User>(HttpStatus.ACCEPTED);
 		} catch (Exception e) {
 			 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -131,10 +146,10 @@ public class UserController {
 		
 	}
 	
-	@GetMapping(value = "/refuseUser/{user_id}")
-	public ResponseEntity<User> refuseUser(@PathVariable Long user_id) {
+	@GetMapping(value = "/desactiverUser/{user_id}")
+	public ResponseEntity<User> desactiverUser(@PathVariable Long user_id) {
 		try {
-			 userService.deleteUser(user_id);
+			 userService.desactiverUser(user_id);
 			 return new ResponseEntity<User>(HttpStatus.ACCEPTED);
 		} catch (Exception e) {
 			 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
